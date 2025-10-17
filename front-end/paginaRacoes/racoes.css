@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Orelega+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 62.5%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  background-color: #e2ac3f;
+
+  width: 100%;
+  height: 120px;
+
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+#div1header {
+  height: 100px;
+  
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#div2header {
+  height: 100px;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#div3header {
+  height: 100px;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: end;
+  gap: 40px;
+  margin-right: 20px;
+}
+
+#logo {
+  width: 145px;
+  height: 145px;
+  color: black;
+}
+
+#barra_pesquisa {
+  width: 650px;
+  height: 50px;
+
+  background-image: url('icons/lupa.svg');
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  padding-left: 30px;
+  
+  border-radius: 100px;
+  border: solid black 1.5px;
+  box-shadow: 3px 4px 6px #bf8208; 
+
+  text-align: center;
+}
+
+#coracao {
+  width: 40px;
+  height: 40px;
+}
+
+#carrinho {
+  width: 40px;
+  height: 40px;
+}
+
+#perfil {
+  width: 40px;
+  height: 40px;
+}
+
+nav {
+  background-color: #c5bcb4;
+
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  
+  font-family: "Anton", sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 23px;
+}
+
+#div1nav {
+  height: 50px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; 
+}
+
+a {
+  text-decoration: none;
+
+  color: black;
+}
+
+.div_racoes {
+  width: 200px;
+  height: 350px;
+
+  background-color: #e7e7e7;
+}
+
+footer {
+  width: 100%;
+  height: 250px;
+
+  background-color: #e2ac3f;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo_footer{
+  width: 180px;
+  height: 180px;
+}
+
+#slogan {
+  font-size: 25px;
+  font-family: "Orelega One", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  color: #503603;
+}
