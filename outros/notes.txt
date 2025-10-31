@@ -1,0 +1,30 @@
+// app.get("/consulta", async (req, res) => {
+//   const client = await pool.connect();
+//   try {
+//     const result = await client.query("SELECT * FROM cliente");
+//     return res.json(result.rows);
+//   } catch (error) {
+//     console.error("Erro na consulta:", error);
+//     return res.status(500).json({ error: "Erro ao consultar o banco de dados." });
+//   } finally {
+//     client.release();
+//   }
+// });
+
+// app.post("/cadastro", async (req, res) => {
+//   const client = await pool.connect();
+//   const { nome, telefone, email } = req.body;
+
+//   try {
+//     await client.query(
+//       "INSERT INTO cliente (nome, telefone, email) VALUES ($1, $2, $3)",
+//       [nome, telefone, email]
+//     );
+//     return res.json({ message: "Cadastro realizado" });
+//   } catch (error) {
+//     console.error("Erro no cadastro:", error);
+//     return res.status(500).json({ error: "Erro ao cadastrar." });
+//   } finally {
+//     client.release();
+//   }
+// });

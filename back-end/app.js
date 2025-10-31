@@ -39,6 +39,12 @@ app.get("/pagina/inicial", async (req, res) => {
     return res.status(400);
 });
 
+app.get("/produtos/:id", async (req, res) => {
+  const { id } = req.params;
+  const produto = await sql`SELECT * FROM produtos WHERE id_produto = ${id}`;
+  return res.status(200).json(produto[0]);
+});
+
 //inicializar api
 app.listen(3000, () => {
   console.log("No ar! 🚀");

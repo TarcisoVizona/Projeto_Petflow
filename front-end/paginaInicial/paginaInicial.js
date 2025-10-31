@@ -1,9 +1,21 @@
+const perfil = document.querySelector("#perfil_link");
+const racoes_nav = document.querySelector("#racoes_nav");
+
+//mostrar produtos
 window.addEventListener("load", async () => {
-  const div_root = document.querySelector(".product_cards");
-  const resposta = await fetch("http://localhost:3000/pagina/racoes");
+  const div_content = document.querySelector(".product_cards");
+  const resposta = await fetch("http://localhost:3000/pagina/inicial");
   const produtos = await resposta.json();
 
- produtos.map((p) => {
+  perfil.addEventListener("click" , () => {
+    if (localStorage.getItem("id")) {
+    perfil.href = "../perfil/perfil.html";
+  } else {
+    perfil.href = "../login/login.html";
+  }
+});
+
+  produtos.map((p) => {
     const link = document.createElement("a");
 
     link.href = `../Detalhes/detalhes.html?id=${p.id_produto}`;
@@ -30,3 +42,6 @@ window.addEventListener("load", async () => {
     div_content.appendChild(link);
   });
 });
+
+
+
