@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="paginaInicial.css" />
+    <link rel="stylesheet" href="paginaInicial.css">
   </head>
   <body>
     <div id="Root">
@@ -20,43 +20,71 @@
           />
         </div>
         <div id="div3header">
-          <a href=""><img src="icons/coracao.svg" alt="" id="coracao" /></a>
-          <a href=""><img src="icons/carrinho.svg" alt="" id="carrinho" /></a>
-          <a href="" id="perfil_link"><img src="icons/perfil.svg" alt="" id="perfil" /></a>
+          <img src="icons/coracao.svg" alt="" id="coracao" />
+          <img src="icons/carrinho.svg" alt="" id="carrinho" />
+          <img src="icons/perfil.svg" alt="" id="perfil" />
         </div>
       </header>
       <nav>
-        <div id="div1nav">
-          <a id="brinquedos_nav" style="cursor: pointer;">Brinquedos</a>
-          <a id="casinhas_nav" style="cursor: pointer;">Casinhas</a>
-          <a id="racoes_nav" style="cursor: pointer;">Rações</a>
-          <a id="petiscos_nav" style="cursor: pointer;">Petiscos</a>
-          <a id="acessorios_nav" style="cursor: pointer;">Acessórios</a>
-        </div>
+        <ul id="div1nav">
+          <li id="Brinquedos">Brinquedos</li>
+          <li id="Casinhas">Casinhas</li>
+          <li id="Racoes">Rações</li>
+          <li id="Petiscos">Petiscos</li>
+          <li id="Acessorios">Acessórios</li>
+        </ul>
       </nav>
       <div id="image">
         <img
           src="icons/cat-and-dog-first.jpg"
           class="d-block w-100"
-          alt="cuteDogandCat"]
+          alt="cuteDogandCat"
+          ]
           id="cuteDogandCat"
         />
       </div>
       <div id="icon_produtos">
-        <div class="iconesRedondos"><a href=""><img src="icons/bone.png" alt="" class="roundImages"></a></div>
-        <div class="iconesRedondos"><a href=""><img src="icons/paw.png" alt="" class="roundImages"></a></div class="roundImages"></a>
-        <div class="iconesRedondos"><a href=""><img src="icons/doghouse.png" alt="" class="roundImages"></a></div>
-        <div class="iconesRedondos"><a href=""><img src="icons/ball.png" alt="" class="roundImages"></a></div>
-        <div class="iconesRedondos"><a href=""><img src="icons/hestetoscope.svg" alt="" class="roundImages"></a></div>
-        <div class="iconesRedondos"><a href=""><img src="icons/hanger.svg" alt="" class="roundImages"></a></div>
+        <div class="iconesRedondos">
+          <a href=""><img src="icons/bone.png" alt="" class="roundImages" /></a>
+        </div>
+        <div class="iconesRedondos">
+          <a href=""><img src="icons/paw.png" alt="" class="roundImages" /></a>
+        </div>
+        <div class="iconesRedondos">
+          <a href=""
+            ><img src="icons/doghouse.png" alt="" class="roundImages"
+          /></a>
+        </div>
+        <div class="iconesRedondos">
+          <a href=""><img src="icons/ball.png" alt="" class="roundImages" /></a>
+        </div>
+        <div class="iconesRedondos">
+          <a href=""
+            ><img src="icons/hestetoscope.svg" alt="" class="roundImages"
+          /></a>
+        </div>
+        <div class="iconesRedondos">
+          <a href=""
+            ><img src="icons/hanger.svg" alt="" class="roundImages"
+          /></a>
+        </div>
       </div>
-      <div class="product_cards"> 
-      </div>
+      <div id="product_cards"></div>
       <footer>
         <img id="logo_footer" src="icons/logo_petflow.png" alt="" />
         <p id="slogan">Sempre pelos seus pets!</p>
       </footer>
+      <dialog id="perfilM">
+        <h1 id="nome_usuario"></h1>
+        <input
+          type="text"
+          id="input_newname"
+          placeholder="Digite um novo nome..."
+        />
+        <button id="alterarNome">Alterar nome</button>
+        <button id="sair">Sair</button>
+      </dialog>
     </div>
     <script src="./paginaInicial.js"></script>
   </body>
-  </html>
+</html>

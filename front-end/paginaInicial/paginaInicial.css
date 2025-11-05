@@ -16,6 +16,49 @@ body {
 
   background-color: #f2f3f4;
 }
+#perfilM {
+  width: 500px;
+  height: 500px;
+
+  background-color: #e2ac3f;
+
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 20px;
+
+  font-family: "Anton", sans-serif;
+  letter-spacing: 2px;
+}
+
+#input_newname {
+  width: 300px;
+  height: 50px;
+
+  display: none;
+
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+
+  border-radius: 10px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+
+  background-color: rgb(212, 230, 246);
+}
 
 #root {
   width: 100%;
@@ -66,6 +109,8 @@ header {
   width: 145px;
   height: 145px;
   color: black;
+
+  cursor: pointer;
 }
 
 #barra_pesquisa {
@@ -99,6 +144,8 @@ header {
 #perfil {
   width: 40px;
   height: 40px;
+
+  cursor: pointer;
 }
 
 nav {
@@ -124,34 +171,15 @@ nav {
   justify-content: space-evenly;
 }
 
-#brinquedos_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
+li {
+  list-style: none;
 }
 
-#casinhas_nav:hover {
-  transition: 140ms;
+li:hover {
+  transition: 120ms;
+  color: #f5faff;
 
-  color: #f0f7ff;
-}
-
-#racoes_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
-}
-
-#petiscos_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
-}
-
-#acessorios_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
+  cursor: pointer;
 }
 
 .div_racoes {
@@ -165,6 +193,10 @@ a {
   text-decoration: none;
 
   color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
@@ -240,39 +272,45 @@ footer {
   height: 100px;
 }
 
-.product_cards {
+#product_cards {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 
-  margin-bottom: 150px;
-  margin-top: 100px;
+  padding: 20px;
+
+  margin-top: 80px;
+
+  gap: 30px;
 }
 
-#card {
+#product_cards div {
   width: 230px;
   height: 400px;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
-  gap: 8px;
+  gap: 3px;
 
-  background-color: rgb(231, 231, 231);
+  background-color: rgb(220, 220, 220);
 
   padding: 10px;
 
-  border-radius: 5px;
   margin: 20px;
+
+  border-radius: 10px;
 }
 
-.product_cards h5 {
+#product_cards h5 {
   font-size: 2rem;
   font-family: "Anton", sans-serif;
 }
 
-.product_cards h6 {
+#product_cards h6 {
   font-size: 1.5rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 100;
@@ -281,4 +319,20 @@ footer {
 img {
   width: 300px;
   height: 300px;
+}
+
+h1{
+  font-size: 30px;
+}
+
+#perfilM {
+  display: none;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border: none;
+}
+
+dialog:-internal-dialog-in-top-layer::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
 }
