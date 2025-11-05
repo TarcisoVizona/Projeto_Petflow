@@ -1,19 +1,24 @@
 const perfil = document.querySelector("#perfil_link");
+const brinquedos_nav = document.querySelector("#brinquedos_nav");
+const casinhas_nav = document.querySelector("#casinhas_nav");
 const racoes_nav = document.querySelector("#racoes_nav");
+const petiscos_nav = document.querySelector("#petiscos_nav");
+const acessorios_nav = document.querySelector("#acessorios_nav");
+
+//entrar no perfil
+perfil.addEventListener("click", () => {
+    if (localStorage.getItem("id")) {
+      perfil.href = "../perfil/perfil.html";
+    } else {
+      perfil.href = "file:///C:/Users/Tarciso/Desktop/PetFlow/Projeto/front-end/loginCadastro/login/login.html";
+    }
+  });
 
 //mostrar produtos
 window.addEventListener("load", async () => {
   const div_content = document.querySelector(".product_cards");
   const resposta = await fetch("http://localhost:3000/pagina/inicial");
   const produtos = await resposta.json();
-
-  perfil.addEventListener("click" , () => {
-    if (localStorage.getItem("id")) {
-    perfil.href = "../perfil/perfil.html";
-  } else {
-    perfil.href = "../login/login.html";
-  }
-});
 
   produtos.map((p) => {
     const link = document.createElement("a");
@@ -43,5 +48,25 @@ window.addEventListener("load", async () => {
   });
 });
 
+//link da pagina dos produtos
+brinquedos_nav.addEventListener("click", () => {
+  window.location.href = "../paginasProduto/paginaBrinquedos/brinquedos.html";
+});
 
+casinhas_nav.addEventListener("click", () => {
+  window.location.href = "../paginasProduto/paginaCasinhas/casinhas.html";
+});
+
+racoes_nav.addEventListener("click", () => {
+  window.location.href = "../paginasProduto/paginaRacoes/racoes.html";
+});
+
+petiscos_nav.addEventListener("click", () => {
+  window.location.href = "../paginasProduto/paginaPetiscos/petiscos.html";
+});
+
+acessorios_nav.addEventListener("click", () => {
+  window.location.href = "../paginasProduto/paginaAcessorios/acessorios.html";
+});
+//link da pagina dos produtos
 

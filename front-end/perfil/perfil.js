@@ -9,14 +9,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   nome.innerHTML = `Olá, ${nome_usuario}!`;
 });
 
+//alterar nome
 alterarNome.addEventListener("click", () => {
-  if (alterarNome.innerText == "Ocultar") {
-    alterarNome.innerText = "Alterar Nome";
-    input_newname.style.display = "none";
-  } else {
-    alterarNome.innerText = "Ocultar";
-    input_newname.style.display = "block";
-  }
+  alterarNome.innerText = "Salvar";
+  input_newname.style.display = "block";
+
+  alterarNome.addEventListener("click", async () => {
+    const nomeUsuario = input_newname.value;
+    localStorage.setItem("nomeUsuario", nomeUsuario);
+    window.location.reload();
+  });
+  return;
 });
 
 //logout

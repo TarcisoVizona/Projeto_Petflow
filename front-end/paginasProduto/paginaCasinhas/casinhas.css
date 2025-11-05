@@ -124,34 +124,22 @@ nav {
   justify-content: space-evenly;
 }
 
-#brinquedos_nav:hover {
-  transition: 140ms;
+.navButtons {
+  text-decoration: none;
 
-  color: #f0f7ff;
+  color: black;
 }
 
-#casinhas_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
+.navButtons:hover {
+  transition: 0.15s ease-in-out;
+  color: rgb(255, 255, 255);
 }
 
-#racoes_nav:hover {
-  transition: 140ms;
+a {
+  text-decoration: none;
 
-  color: #f0f7ff;
-}
+  color: black;
 
-#petiscos_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
-}
-
-#acessorios_nav:hover {
-  transition: 140ms;
-
-  color: #f0f7ff;
 }
 
 .div_racoes {
@@ -159,12 +147,6 @@ nav {
   height: 350px;
 
   background-color: #e7e7e7;
-}
-
-a {
-  text-decoration: none;
-
-  color: black;
 }
 
 footer {
@@ -191,94 +173,4 @@ footer {
   font-style: normal;
 
   color: #503603;
-}
-
-#image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#cuteDogandCat {
-  width: 100%;
-  height: 430px;
-}
-
-#icon_produtos {
-  position: absolute;
-  top: 445px;
-
-  height: 300px;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.iconesRedondos {
-  width: 170px;
-  height: 170px;
-
-  background-color: #e2ac3f;
-
-  border-radius: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.roundImages {
-  width: 80px;
-  height: 80px;
-}
-
-.roundImages:hover {
-  transition: 0.15s ease-in-out;
-  width: 100px;
-  height: 100px;
-}
-
-.product_cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  margin-bottom: 150px;
-  margin-top: 100px;
-}
-
-#card {
-  width: 230px;
-  height: 400px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 8px;
-
-  background-color: rgb(231, 231, 231);
-
-  padding: 10px;
-
-  border-radius: 5px;
-  margin: 20px;
-}
-
-.product_cards h5 {
-  font-size: 2rem;
-  font-family: "Anton", sans-serif;
-}
-
-.product_cards h6 {
-  font-size: 1.5rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 100;
-}
-
-img {
-  width: 300px;
-  height: 300px;
 }

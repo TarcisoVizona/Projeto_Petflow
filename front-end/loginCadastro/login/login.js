@@ -22,7 +22,7 @@ entrar.addEventListener("click", async () => {
     localStorage.setItem("nomeUsuario", usuario.nome_usuario);
     localStorage.setItem("email", usuario.email_usuario);
     localStorage.setItem("id", usuario.id_usuario);
-    return (window.location.href = "../paginaInicial/paginaInicial.html");
+    return (window.location.href = "file:///C:/Users/Tarciso/Desktop/PetFlow/Projeto/front-end/paginaInicial/paginaInicial.html");
   } 
     else {
     alert("Usuario ou senha incorretos");
