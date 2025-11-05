@@ -39,7 +39,17 @@ app.get("/pagina/inicial", async (req, res) => {
     return res.status(400);
 });
 
-app.get("/produtos/:id", async (req, res) => {
+app.get("/produtos/:categoria", async (req , res) => {
+  const { categoria } = req.params;
+  const produtos = await sql`SELECT * FROM produtos WHERE categoria = ${categoria}`;
+  if (produtos){
+    return res.status(200).json(produtos);
+  }
+  else
+    return res.status(400);
+});
+
+app.get("/produto/:id", async (req, res) => {
   const { id } = req.params;
   const produto = await sql`SELECT * FROM produtos WHERE id_produto = ${id}`;
   return res.status(200).json(produto[0]);
