@@ -1,7 +1,14 @@
 const urlParams = new URLSearchParams(window.location.search);
 const perfil = document.querySelector("#perfil_link");
+const logo = document.querySelector("#logo");
+const div1nav = document.querySelector("#div1nav");
 
 window.addEventListener("load", async () => {
+  div1nav.innerText = ""
+  const nprod = document.createElement("h1")
+  nprod.innerText = `Produto`
+  div1nav.appendChild(nprod)
+  
   const id = urlParams.get("id");
   const resposta = await fetch(`http://localhost:3000/produto/${id}`);
   const produto = await resposta.json();
@@ -23,12 +30,14 @@ window.addEventListener("load", async () => {
   const descricao = document.createElement("p");
   descricao.innerText = produto.descricao;
 
-  const quantidade = document.createElement("p");
-  quantidade.innerText = produto.quantidade;
-
-  const carrinho = document.createElement("a");
+  const carrinho = document.createElement("img");
+  carrinho.src = 'icons/carrinho.svg'
   carrinho.classList.add("carrinho");
   carrinho.innerText = produto.carrinho;
+
+  const coracao = document.createElement("img");
+  coracao.src = 'icons/coracao.svg'
+  coracao.id = 'coracao2'
 
   const div_botao = document.createElement("div");
   div_botao.id = "div_botao";
@@ -38,14 +47,14 @@ window.addEventListener("load", async () => {
   botao_comprar.innerText = "Comprar";
 
   div_botao.appendChild(botao_comprar);
+  div_botao.appendChild(carrinho);
+  div_botao.appendChild(coracao);
 
   div_direita.append(titulo);
   div_direita.append(preco);
   div_direita.append(descricao);
-  div_direita.append(quantidade);
-  div_direita.append(carrinho);
   div_direita.append(div_botao);
-
+  
   botao_comprar.addEventListener("click", async () => {
     if (localStorage.getItem("id")) {
       alert("Compra realizada com sucesso!");
@@ -66,3 +75,8 @@ window.addEventListener("load", async () => {
     window.location = "../detalhes/detalhes.html";
   }
 });
+
+logo.addEventListener("click", () => {
+  window.location.href = "../paginaInicial/paginaInicial.html";
+});
+

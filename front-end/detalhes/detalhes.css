@@ -66,6 +66,8 @@ header {
   width: 145px;
   height: 145px;
   color: black;
+
+  cursor: pointer;
 }
 
 #barra_pesquisa {
@@ -190,17 +192,51 @@ footer {
   flex-direction: row;
   gap: 5px;
 }
+
 #esquerda {
   width: 600px;
   height: 500px;
-  margin: 70px;
-    background-color: #e0dddb;
+  background-color: #e0dddb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
 }
 
 #direita {
   width: 600px;
   height: 500px;
   margin: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+
+  padding: 30px;
+  gap: 40px;
+}
+
+#div_botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  gap: 20px;
+}
+
+.carrinho {
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+}
+
+#coracao2 {
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
 }
 
 img {
@@ -213,8 +249,6 @@ h1 {
   /* justify-content: center; */
   align-items: center;
   font-size: 30px;
-  padding-left: 50px;
-  padding-top: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -223,8 +257,6 @@ h3 {
   /* justify-content: center; */
   align-items: center;
   font-size: 30px;
-  padding-left: 50px;
-  padding-top: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -239,29 +271,21 @@ h3 {
   width: 160px;
   height: 60px;
   font-size: 20px;
-  background-color: #e2ac3f;
-
-}
-
-
-#div_botao {
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  height: 150px;
+  font-weight: bolder;
+  background-color: #4aaf60;
+  color: aliceblue;
+  cursor: pointer;
 }
 
 p {
   display: flex;
   align-items: center;
   font-size: 13px;
-  padding-left: 50px;
-  padding-top: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 a {
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: end;
   /* height: 150px; */

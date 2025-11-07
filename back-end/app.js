@@ -30,7 +30,7 @@ app.post("/usuarios/login", async (req, res) => {
 
 //rota para exibir produtos na tela inicial
 app.get("/pagina/inicial", async (req, res) => {
-  const produtos = await sql`SELECT * FROM produtos`;
+  const produtos = await sql`SELECT * FROM produtos ORDER BY RANDOM() LIMIT 35`;
   console.log(produtos)
   if (produtos){
     return res.status(200).json(produtos);
@@ -56,6 +56,16 @@ app.get("/produto/:id", async (req, res) => {
   const produto = await sql`SELECT * FROM produtos WHERE id_produto = ${id}`;
   return res.status(200).json(produto[0]);
 });
+
+app.post("/comprar", async (req,res) => {
+  const { id_produto, valor_total, data_venda, id_usuario } = req.body;
+  console.log(id_produto)
+  const comprar = await sql `insert into venda(id_produto, valor_total, data_venda, id_usuario) values (${id_produto}, ${valor_total}, ${data_venda}, ${id_usuario})`
+  if (comprar) {
+    return res.status(200).json(cadastro[0]);
+  }
+  return res.status(401).json("Erro ao cadastrar");
+}); 
 
 //inicializar api
 app.listen(3000, () => {
