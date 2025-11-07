@@ -39,6 +39,7 @@ app.get("/pagina/inicial", async (req, res) => {
     return res.status(400);
 });
 
+//detalhes por categoria
 app.get("/produtos/:categoria", async (req , res) => {
   const { categoria } = req.params;
   const produtos = await sql`SELECT * FROM produtos WHERE categoria = ${categoria}`;
@@ -49,6 +50,7 @@ app.get("/produtos/:categoria", async (req , res) => {
     return res.status(400);
 });
 
+//detalhes dos produtos
 app.get("/produto/:id", async (req, res) => {
   const { id } = req.params;
   const produto = await sql`SELECT * FROM produtos WHERE id_produto = ${id}`;
