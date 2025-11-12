@@ -4,6 +4,7 @@ const brinquedos = document.querySelector("#Brinquedos");
 const casinhas = document.querySelector("#Casinhas");
 const racoes = document.querySelector("#Racoes");
 const petiscos = document.querySelector("#Petiscos");
+const remedios = document.querySelector("#Remedios");
 const acessorios = document.querySelector("#Acessorios");
 const vazia = document.querySelector("#product_cards");
 const imagem_cao = document.querySelector("#image");
@@ -255,6 +256,46 @@ petiscos.addEventListener("click", async () => {
   vazia.style.margin = "0"
   p.innerText = "Pestiscos"
   const res = await fetch("http://localhost:3000/produtos/petiscos");
+  const produtos = await res.json();
+  if (res.status == 200) {
+    produtos.map((p) => {
+      const link = document.createElement("a");
+
+      link.href = `../Detalhes/detalhes.html?id=${p.id_produto}`;
+      link.target = "_blank";
+
+      const div_card = document.createElement("div");
+      div_card.classList = "card";
+
+      const imagem_card = document.createElement("img");
+      imagem_card.src = p.img_url;
+      imagem_card.width = "150";
+      imagem_card.height = "200";
+
+      const preco_card = document.createElement("h5");
+      preco_card.innerText = "R$ " + p.valor_produto;
+
+      const titulo_card = document.createElement("h6");
+      titulo_card.innerText = p.nome_produto;
+
+      div_card.appendChild(imagem_card);
+      div_card.appendChild(preco_card);
+      div_card.appendChild(titulo_card);
+
+      link.appendChild(div_card);
+
+      vazia.appendChild(link);
+    });
+  } else alert("Produtos não encontrados");
+});
+
+remedios.addEventListener("click", async () => {
+  bolinhas.innerHTML = "";
+  imagem_cao.innerHTML = "";
+  vazia.innerHTML = "";
+  vazia.style.margin = "0"
+  p.innerText = "Remédios"
+  const res = await fetch("http://localhost:3000/produtos/remedios");
   const produtos = await res.json();
   if (res.status == 200) {
     produtos.map((p) => {

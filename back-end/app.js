@@ -98,6 +98,35 @@ app.post("/comprar", async (req, res) => {
   return res.status(401).json("Erro ao cadastrar");
 });
 
+//deletar produtos
+app.delete("/deletar/produtos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await sql`DELETE FROM produtos WHERE id_produto = ${id} `;
+    return res.status(200).json("produto deletado");
+  } catch (error) {
+    console.log(error)
+    res
+      .status(409)
+      .json("Produto não pode ser deletado por que ja foi vendido");
+  }
+});
+
+// Cadastrar novo produto
+app.post("/admin/produtos", async (req, res) => {
+  const { nome_produto, valor_produto, quantidade_produto, img_url, categoria, descricao } = req.body;
+  await sql`INSERT INTO produtos(nome_produto, valor_produto, quantidade_produto, img_url, categoria, descricao) 
+  values(
+  ${nome_produto},
+  ${valor_produto},
+  ${quantidade_produto},
+  ${img_url},
+  ${categoria},
+  ${descricao})`;
+
+  return res.status(201).json("produto criado");
+});
+
 //inicializar api
 app.listen(3000, () => {
   console.log("No ar! 🚀");
