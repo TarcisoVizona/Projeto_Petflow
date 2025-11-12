@@ -1,18 +1,6 @@
-window.addEventListener("DOMContentLoaded" , async () =>{
-  const inputs = document.querySelector("#inputs")
-  inputs.style.display = "none"
-})
-
 const sair = document.querySelector("#sair");
-sair.addEventListener("click", () => {
-  localStorage.removeItem("email");
-  localStorage.removeItem("cargo");
-  localStorage.removeItem("nomeUsuario");
-  localStorage.removeItem("id_usuario");
-  window.location.href = "../paginaInicial/paginaInicial.html";
-});
 
-async function ListarMeusProdutos() {
+window.addEventListener("load", async () => {
   const div_content = document.querySelector("#produtos");
 
   const resposta = await fetch(`http://localhost:3000/pagina/admin`);
@@ -23,16 +11,16 @@ async function ListarMeusProdutos() {
     div_card.id = "card";
 
     const imagem_card = document.createElement("img");
-    imagem_card.src = p.imagem;
+    imagem_card.src = p.img_url;
 
     const titulo_card = document.createElement("h5");
-    titulo_card.innerText = p.titulo;
+    titulo_card.innerText = p.nome_produto;
 
     const descricao_card = document.createElement("p");
     descricao_card.innerText = p.descricao;
 
     const preco_card = document.createElement("h6");
-    preco_card.innerText = "R$ " + p.preco;
+    preco_card.innerText = "R$ " + p.valor_produto;
 
     const div_botoes = document.createElement("div");
     div_botoes.id = "div_acoes";
@@ -44,11 +32,13 @@ async function ListarMeusProdutos() {
     botao_editar.addEventListener("click", () => {
       comeco_pagina.scrollIntoView();
       HabilitarFormularioEdicaoProdutos(
-        p.id,
-        p.titulo,
+        p.id_produto,
+        p.nome_produto,
+        p.valor_produto,
+        p.quantidade_produto,
         p.descricao,
-        p.imagem,
-        p.preco
+        p.img_url,
+        p.categoria
       );
     });
 
@@ -72,6 +62,12 @@ async function ListarMeusProdutos() {
 
     div_content.appendChild(div_card);
   });
-}
+});
 
-
+sair.addEventListener("click", () => {
+  localStorage.removeItem("email");
+  localStorage.removeItem("cargo");
+  localStorage.removeItem("nomeUsuario");
+  localStorage.removeItem("id_usuario");
+  window.location.href = "../paginaInicial/paginaInicial.html";
+});

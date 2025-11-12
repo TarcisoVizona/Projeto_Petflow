@@ -16,20 +16,6 @@ body {
 
   background-color: #f2f3f4;
 }
-dialog {
-  width: 500px;
-  height: 500px;
-  background-color: #e2ac3f;
-  border-radius: 20px;
-  gap: 20px;
-  font-family: "Anton", sans-serif;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  letter-spacing: 2px;
-  transform: translate(-50%, -50%);
-  border: none;
-}
 
 #input_newname {
   width: 300px;
@@ -151,31 +137,14 @@ nav {
   height: 50px;
 
   display: flex;
+  justify-content: center;
   align-items: center;
 
   font-family: "Anton", sans-serif;
   letter-spacing: 0.1em;
   font-size: 18px;
-}
 
-#div1nav {
-  height: 50px;
-  width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-li {
-  list-style: none;
-}
-
-li:hover {
-  transition: 120ms;
-  color: #f5faff;
-
-  cursor: pointer;
 }
 
 .div_racoes {
@@ -257,16 +226,79 @@ footer {
   align-items: center;
 }
 
-.roundImages {
-  width: 80px;
-  height: 80px;
-}
-
-.roundImages:hover {
-  transition: 0.15s ease-in-out;
+#Brinquedos {
   width: 100px;
   height: 100px;
+  cursor: pointer;
 }
+
+#Brinquedos:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+  
+}
+
+#Acessorios {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#Acessorios:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
+#Petiscos {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#Petiscos:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
+#Remedios {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#Remedios:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
+#Casinhas {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#Casinhas:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
+#Racoes{
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#Racoes:hover {
+  transition: 0.15s ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
 
 #product_cards {
   display: flex;
@@ -324,6 +356,22 @@ h1 {
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de transparência */
 }
+
+dialog {
+  width: 500px;
+  height: 500px;
+  background-color: #e2ac3f;
+  border-radius: 20px;
+  gap: 20px;
+  font-family: "Anton", sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  letter-spacing: 2px;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
 .pmod{
   display: flex;
   flex-direction: column;
@@ -359,4 +407,8 @@ dialog::backdrop {
   align-items: start;
 
    padding: 10px;
+}
+
+p {
+  font-size: 25px;
 }

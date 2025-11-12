@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Detalhes do Produto </title>
-    <link rel="stylesheet" href="detalhes.css">
-</head>
-     <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Produto</title>
+    <link rel="stylesheet" href="detalhes.css" />
+  </head>
+  <body>
     <div id="Root">
       <header>
         <div id="div1header">
@@ -20,9 +20,9 @@
           />
         </div>
         <div id="div3header">
-          <a href=""><img src="icons/coracao.svg" alt="" id="coracao" /></a>
-          <a href=""><img src="icons/carrinho.svg" alt="" id="carrinho" /></a>
-          <a href="" id="perfil_link"><img src="icons/perfil.svg" alt="" id="perfil" /></a>
+          <img src="icons/coracao.svg" alt="" id="coracao" />
+          <img src="icons/carrinho.svg" alt="" id="carrinho" />
+          <img src="icons/perfil.svg" alt="" id="perfil" />
         </div>
       </header>
       <nav>
@@ -34,19 +34,33 @@
           <a href="" class="navButtons">Acessórios</a>
         </div>
       </nav>
-
+      <div id="container">
+        <div id="esquerda"></div>
+        <div id="direita"></div>
       </div>
-      <div id="container"> 
-        <div id="esquerda"> 
+      <dialog id="perfilM">
+        <div>
+          <div id="divX">
+            <button id="X">X</button>
+          </div>
+          <div class="pmod">
+            <h1 id="nome_usuario"></h1>
+            <input
+              type="text"
+              id="input_newname"
+              placeholder="Digite um novo nome..."
+            />
+            <button id="alterarNome">Alterar nome</button>
+            <button id="sair">Sair</button>
+          </div>
         </div>
-        <div id="direita">
-        </div>
-      </div>
-      
+      </dialog>
       <footer>
         <img id="logo_footer" src="icons/logo_petflow.png" alt="" />
         <p id="slogan">Sempre pelos seus pets!</p>
       </footer>
-        <script src="detalhes.js"></script>
-</body>
+    </div>
+
+    <script src="detalhes.js"></script>
+  </body>
 </html>

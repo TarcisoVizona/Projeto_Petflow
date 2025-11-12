@@ -10,9 +10,9 @@ const imagem_cao = document.querySelector("#image");
 const bolinhas = document.querySelector("#icon_produtos");
 const perfilM = document.querySelector("#perfilM");
 const sair = document.querySelector("#sair");
-const alterarNome = document.querySelector("#alterarNome");
 const input_newname = document.querySelector("#input_newname");
 const Xbutton = document.querySelector("#X");
+const p = document.querySelector("p")
 
 //entrar no perfil
 perfil.addEventListener("click", () => {
@@ -88,6 +88,7 @@ racoes.addEventListener("click", async () => {
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
   vazia.style.margin = "0"
+  p.innerText = "Rações"
   
   const res = await fetch("http://localhost:3000/produtos/racao");
   const produtos = await res.json();
@@ -129,6 +130,7 @@ brinquedos.addEventListener("click", async () => {
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
   vazia.style.margin = "0"
+  p.innerText = "Brinquedos"
   const res = await fetch("http://localhost:3000/produtos/brinquedo");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -169,6 +171,7 @@ acessorios.addEventListener("click", async () => {
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
   vazia.style.margin = "0"
+  p.innerText = "Acessórios"
   const res = await fetch("http://localhost:3000/produtos/acessorios");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -209,6 +212,7 @@ casinhas.addEventListener("click", async () => {
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
   vazia.style.margin = "0"
+  p.innerText = "Casinhas"
   const res = await fetch("http://localhost:3000/produtos/casinha");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -249,6 +253,7 @@ petiscos.addEventListener("click", async () => {
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
   vazia.style.margin = "0"
+  p.innerText = "Pestiscos"
   const res = await fetch("http://localhost:3000/produtos/petiscos");
   const produtos = await res.json();
   if (res.status == 200) {
