@@ -61,7 +61,7 @@ window.addEventListener("load", async () => {
     } else {
       localStorage.setItem("voltarpaginalog", window.location.href);
 
-      window.location = "../login/login.html";
+      window.location = "../loginCadastro/login/login.html";
     }
   });
   localStorage.setItem("id", usuario.id);

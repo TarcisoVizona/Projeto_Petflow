@@ -28,6 +28,16 @@ app.post("/usuarios/login", async (req, res) => {
   return res.status(401).json("Usuario ou Senha incorretos");
 });
 
+app.get("/pagina/admin", async (req, res) => {
+  const produtos = await sql`SELECT * FROM produtos`;
+  console.log(produtos)
+  if (produtos){
+    return res.status(200).json(produtos);
+  }
+  else
+    return res.status(400);
+});
+
 //rota para exibir produtos na tela inicial
 app.get("/pagina/inicial", async (req, res) => {
   const produtos = await sql`SELECT * FROM produtos ORDER BY RANDOM() LIMIT 35`;
