@@ -1,6 +1,7 @@
 const sair = document.querySelector("#sair");
 const comeco_pagina = document.querySelector("h1");
-const criar_produto = document.querySelector("#criarProduto")
+const criar_produto = document.querySelector("#criarProduto");
+const salvar = document.querySelector("#npSalvar");
 
 async function ListarMeusProdutos() {
   const div_content = document.querySelector("#produtos");
@@ -38,9 +39,9 @@ async function ListarMeusProdutos() {
         p.nome_produto,
         p.valor_produto,
         p.quantidade_produto,
-        p.descricao,
         p.img_url,
-        p.categoria
+        p.categoria,
+        p.descricao
       );
     });
 
@@ -66,6 +67,69 @@ async function ListarMeusProdutos() {
   });
 }
 
+function HabilitarFormularioEdicaoProdutos(
+  id_produto,
+  nome_produto,
+  valor_produto,
+  quantidade_produto,
+  img_url,
+  categoria,
+  descricao
+) {
+  id_produto,
+    nome_produto,
+    valor_produto,
+    quantidade_produto,
+    img_url,
+    categoria,
+    descricao;
+
+  document.querySelector("#nome").value = nome_produto;
+  document.querySelector("#valor").value = valor_produto;
+  document.querySelector("#quantidade").value = quantidade_produto;
+  document.querySelector("#imagem").value = img_url;
+  document.querySelector("#categoria").value = categoria;
+  document.querySelector("#descricao").value = descricao;
+
+  criar_produto.innerText = "Salvar mudanças";
+  criar_produto.addEventListener("click", () => {
+    AlterarProduto(id_produto);
+  });
+  return;
+}
+
+async function AlterarProduto(id_produto) {
+  const nome = document.querySelector("#nome").value;
+  const valor = document.querySelector("#valor").value;
+  const quantidade = document.querySelector("#quantidade").value;
+  const imagem = document.querySelector("#imagem").value;
+  const categoria = document.querySelector("#categoria").value;
+  const descricao = document.querySelector("#descricao").value;
+
+  const resposta = await fetch(
+    `http://localhost:3000/alterarProduto/${id_produto}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome,
+        valor,
+        quantidade,
+        imagem,
+        categoria,
+        descricao,
+      }),
+    }
+  );
+
+  if (resposta.status == 201) {
+    window.location.reload(true);
+    return alert("Produto alterado!");
+  }
+}
+
 async function ExcluirProduto(id_produto) {
   const resposta = await fetch(
     `http://localhost:3000/deletar/produtos/${id_produto}`,
@@ -87,41 +151,6 @@ async function ExcluirProduto(id_produto) {
   }
 }
 
-function HabilitarFormularioEdicaoProdutos(
-  id_produto,
-  nome_produto,
-  valor_produto,
-  quantidade_produto,
-  img_url,
-  categoria,
-  descricao
-) {
-    id_produto,
-    nome_produto,
-    valor_produto,
-    quantidade_produto,
-    img_url,
-    categoria,
-    descricao
-  
-  document.querySelector("#nome").value = nome_produto;
-  document.querySelector("#valor").value = valor_produto;
-  document.querySelector("#quantidade").value = quantidade_produto;
-  document.querySelector("#imagem").value = img_url;
-  document.querySelector("#categoria").value = categoria;
-  document.querySelector("#descricao").value = descricao;
-
-  let new_botao = botao_novo_produto.cloneNode(true);
-  botao_novo_produto.parentNode.replaceChild(new_botao, botao_novo_produto);
-  botao_novo_produto = new_botao;
-  botao_novo_produto.addEventListener("click", () => {
-    AlterarProduto(id_produto);
-  });
-  botao_novo_produto.innerText = "Salvar mudanças";
-
-  return;
-}
-
 function HabilitarFormularioCadastrarProdutos() {
   LimparCampos();
   LimparProdutos();
@@ -129,15 +158,22 @@ function HabilitarFormularioCadastrarProdutos() {
 }
 
 async function CadastrarProduto() {
-  const nome_produto = document.querySelector("#nome").value 
-  const valor_produto = document.querySelector("#valor").value 
-  const quantidade_produto = document.querySelector("#quantidade").value 
-  const img_url = document.querySelector("#imagem").value 
-  const categoria = document.querySelector("#categoria").value 
-  const descricao = document.querySelector("#descricao").value 
+  const nome_produto = document.querySelector("#nome").value;
+  const valor_produto = document.querySelector("#valor").value;
+  const quantidade_produto = document.querySelector("#quantidade").value;
+  const img_url = document.querySelector("#imagem").value;
+  const categoria = document.querySelector("#categoria").value;
+  const descricao = document.querySelector("#descricao").value;
 
-  console.log(nome_produto, valor_produto, quantidade_produto, img_url, categoria, descricao);
-  const resposta = await fetch("http://localhost:3000/admin/produtos", {
+  console.log(
+    nome_produto,
+    valor_produto,
+    quantidade_produto,
+    img_url,
+    categoria,
+    descricao
+  );
+  const resposta = await fetch("http://localhost:3000/cadastrarProdutos", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -148,7 +184,7 @@ async function CadastrarProduto() {
       quantidade_produto,
       img_url,
       categoria,
-      descricao
+      descricao,
     }),
   });
   if (resposta.status == 201) {
@@ -158,7 +194,7 @@ async function CadastrarProduto() {
     LimparCampos();
     return;
   }
-};
+}
 
 function LimparCampos() {
   document.querySelector("#nome").value = "";
@@ -188,7 +224,32 @@ sair.addEventListener("click", () => {
 });
 
 ListarMeusProdutos();
-criar_produto.addEventListener("click", () => [
-  HabilitarFormularioCadastrarProdutos(),
-  CadastrarProduto()
-])
+
+criar_produto.addEventListener("click", () => {
+  salvar.style.display = "block";
+  criar_produto.style.display = "none"
+});
+
+salvar.addEventListener("click", () => {
+  const nome_produto = document.querySelector("#nome").value;
+  const valor_produto = document.querySelector("#valor").value;
+  const quantidade_produto = document.querySelector("#quantidade").value;
+  const img_url = document.querySelector("#imagem").value;
+  const categoria = document.querySelector("#categoria").value;
+  const descricao = document.querySelector("#descricao").value;
+
+  
+  if (
+    nome_produto == "" ||
+    valor_produto == "" ||
+    quantidade_produto == "" ||
+    img_url == "" ||
+    categoria == "" ||
+    descricao == ""
+  ) {
+    return alert("Preencha todos os campos!");
+  }
+  CadastrarProduto();
+  salvar.style.display = "none";
+
+});

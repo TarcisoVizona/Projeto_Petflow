@@ -32,7 +32,6 @@ app.post("/usuarios/login", async (req, res) => {
 //pagina admin
 app.get("/pagina/admin", async (req, res) => {
   const produtos = await sql`SELECT * FROM produtos`;
-  console.log(produtos);
   if (produtos) {
     return res.status(200).json(produtos);
   } else return res.status(400);
@@ -41,7 +40,6 @@ app.get("/pagina/admin", async (req, res) => {
 //rota para exibir produtos na tela inicial
 app.get("/pagina/inicial", async (req, res) => {
   const produtos = await sql`SELECT * FROM produtos ORDER BY RANDOM() LIMIT 35`;
-  console.log(produtos);
   if (produtos) {
     return res.status(200).json(produtos);
   } else return res.status(400);
@@ -87,6 +85,7 @@ app.get("/produto/:id", async (req, res) => {
   return res.status(200).json(produto[0]);
 });
 
+//criar venda
 app.post("/comprar", async (req, res) => {
   const { id_produto, valor_total, data_venda, id_usuario } = req.body;
   console.log(id_produto);
@@ -105,16 +104,43 @@ app.delete("/deletar/produtos/:id", async (req, res) => {
     await sql`DELETE FROM produtos WHERE id_produto = ${id} `;
     return res.status(200).json("produto deletado");
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res
       .status(409)
       .json("Produto não pode ser deletado por que ja foi vendido");
   }
 });
 
-// Cadastrar novo produto
-app.post("/admin/produtos", async (req, res) => {
-  const { nome_produto, valor_produto, quantidade_produto, img_url, categoria, descricao } = req.body;
+//alterar produtos
+app.put("/alterarProduto/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nome, valor, quantidade, imagem, categoria, descricao } = req.body;
+
+  console.log(req.body)
+
+  await sql`UPDATE produtos SET 
+  nome_produto=${nome}, 
+  valor_produto=${valor}, 
+  quantidade_produto=${quantidade},
+  img_url=${imagem}, 
+  categoria=${categoria},
+  descricao=${descricao}
+  WHERE id_produto = ${id};`;
+
+  return res.status(201).json("alterado");
+});
+
+// cadastrar novo produto
+app.post("/cadastrarProdutos", async (req, res) => {
+  const {
+    nome_produto,
+    valor_produto,
+    quantidade_produto,
+    img_url,
+    categoria,
+    descricao,
+  } = req.body;
+ 
   await sql`INSERT INTO produtos(nome_produto, valor_produto, quantidade_produto, img_url, categoria, descricao) 
   values(
   ${nome_produto},
@@ -122,7 +148,8 @@ app.post("/admin/produtos", async (req, res) => {
   ${quantidade_produto},
   ${img_url},
   ${categoria},
-  ${descricao})`;
+  ${descricao}
+  )`;
 
   return res.status(201).json("produto criado");
 });
