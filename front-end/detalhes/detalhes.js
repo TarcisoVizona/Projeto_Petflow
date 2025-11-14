@@ -121,3 +121,10 @@ logo.addEventListener("click", () => {
   window.location.href = "../paginaInicial/paginaInicial.html";
 });
 
+//logout
+sair.addEventListener("click", () => {
+  localStorage.removeItem("email");
+  localStorage.removeItem("cargo");
+  localStorage.removeItem("id");
+  window.location.href = "../paginaInicial/paginaInicial.html";
+});
