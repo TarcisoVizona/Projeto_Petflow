@@ -13,7 +13,8 @@ const perfilM = document.querySelector("#perfilM");
 const sair = document.querySelector("#sair");
 const input_newname = document.querySelector("#input_newname");
 const Xbutton = document.querySelector("#X");
-const p = document.querySelector("p")
+const p = document.querySelector("p");
+const barra_pesquisa = document.querySelector("#barra_pesquisa");
 
 //entrar no perfil
 perfil.addEventListener("click", () => {
@@ -24,7 +25,6 @@ perfil.addEventListener("click", () => {
     const nome_usuario = localStorage.getItem("nomeUsuario");
     nome.innerHTML = `Olá, ${nome_usuario}!`;
     return perfilM.showModal();
-
   } else if (cargo == 2) {
     return (window.location.href = "../admin/admin.html");
   } else {
@@ -46,9 +46,9 @@ alterarNome.addEventListener("click", () => {
 });
 
 //fechar modal do perfil
-Xbutton.addEventListener('click', () => {
+Xbutton.addEventListener("click", () => {
   perfilM.close();
-})
+});
 
 //mostrar produtos
 window.addEventListener("load", async () => {
@@ -88,9 +88,9 @@ racoes.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Rações"
-  
+  vazia.style.margin = "0";
+  p.innerText = "Rações";
+
   const res = await fetch("http://localhost:3000/produtos/racao");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -130,8 +130,8 @@ brinquedos.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Brinquedos"
+  vazia.style.margin = "0";
+  p.innerText = "Brinquedos";
   const res = await fetch("http://localhost:3000/produtos/brinquedo");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -171,8 +171,8 @@ acessorios.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Acessórios"
+  vazia.style.margin = "0";
+  p.innerText = "Acessórios";
   const res = await fetch("http://localhost:3000/produtos/acessorios");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -212,8 +212,8 @@ casinhas.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Casinhas"
+  vazia.style.margin = "0";
+  p.innerText = "Casinhas";
   const res = await fetch("http://localhost:3000/produtos/casinha");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -253,8 +253,8 @@ petiscos.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Pestiscos"
+  vazia.style.margin = "0";
+  p.innerText = "Pestiscos";
   const res = await fetch("http://localhost:3000/produtos/petiscos");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -293,8 +293,8 @@ remedios.addEventListener("click", async () => {
   bolinhas.innerHTML = "";
   imagem_cao.innerHTML = "";
   vazia.innerHTML = "";
-  vazia.style.margin = "0"
-  p.innerText = "Remédios"
+  vazia.style.margin = "0";
+  p.innerText = "Remédios";
   const res = await fetch("http://localhost:3000/produtos/remedios");
   const produtos = await res.json();
   if (res.status == 200) {
@@ -340,4 +340,50 @@ sair.addEventListener("click", () => {
   localStorage.removeItem("cargo");
   localStorage.removeItem("id");
   window.location.href = "../paginaInicial/paginaInicial.html";
+});
+
+//barra de pesquisa
+barra_pesquisa.addEventListener("input", async () => {
+  let search = barra_pesquisa.value;
+  bolinhas.innerHTML = "";
+  imagem_cao.innerHTML = "";
+  vazia.innerHTML = "";
+  vazia.style.margin = "0";
+const res = await fetch(`http://localhost:3000/produtosSearch?search=${search}`);
+  const produtos = await res.json();
+  if (res.status == 200) {
+    produtos.map((p) => {
+      const link = document.createElement("a");
+
+      link.href = `../Detalhes/detalhes.html?id=${p.id_produto}`;
+      link.target = "_blank";
+
+      const div_card = document.createElement("div");
+      div_card.classList = "card";
+
+      const imagem_card = document.createElement("img");
+      imagem_card.src = p.img_url;
+      imagem_card.width = "150";
+      imagem_card.height = "200";
+
+      const preco_card = document.createElement("h5");
+      preco_card.innerText = "R$ " + p.valor_produto;
+
+      const titulo_card = document.createElement("h6");
+      titulo_card.innerText = p.nome_produto;
+
+      div_card.appendChild(imagem_card);
+      div_card.appendChild(preco_card);
+      div_card.appendChild(titulo_card);
+
+      link.appendChild(div_card);
+
+      vazia.appendChild(link);
+    });
+  } else {
+    const h1Bar = document.createElement("h1");
+    
+    vazia.appendChild(h1Bar)
+    h1Bar.innerText = 'Nenhum produto encontrado'
+  };
 });

@@ -29,7 +29,7 @@ cadastrar.addEventListener("click", async () => {
   const dados = { nome, email, senha, telefone };
 
   try {
-    const resposta = await fetch("", {
+    const resposta = await fetch("http://localhost:3000/cadastro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

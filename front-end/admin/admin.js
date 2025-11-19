@@ -194,6 +194,9 @@ async function CadastrarProduto() {
     LimparCampos();
     return;
   }
+  else {
+    alert("Erro ao cadastrar!")
+  }
 }
 
 function LimparCampos() {

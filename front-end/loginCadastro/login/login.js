@@ -23,10 +23,16 @@ entrar.addEventListener("click", async () => {
     localStorage.setItem("email", usuario.email_usuario);
     localStorage.setItem("id", usuario.id_usuario);
     localStorage.setItem("cargo", usuario.cargo);
-    window.location.href = "file:///C:/Users/Tarciso/Desktop/PetFlow/Projeto/front-end/paginaInicial/paginaInicial.html";
   } 
     else {
     alert("Usuario ou senha incorretos");
+  }
+
+  if (usuario.cargo == 'Sem cargo'){
+    window.location.href = "file:///C:/Users/Tarciso/Desktop/PetFlow/Projeto/front-end/paginaInicial/paginaInicial.html";
+  }
+  else {
+    window.location.href = "file:///C:/Users/Tarciso/Desktop/PetFlow/Projeto/front-end/admin/admin.html";
   }
 });
 

@@ -55,10 +55,35 @@
           </div>
         </div>
       </dialog>
+
       <footer>
         <img id="logo_footer" src="icons/logo_petflow.png" alt="" />
         <p id="slogan">Sempre pelos seus pets!</p>
       </footer>
+      <dialog id="perfilM">
+        <div id="divX">
+          <button id="X">X</button>
+        </div>
+        <div class="pmod">
+          <h1 id="nome_usuario"></h1>
+          <input
+            type="text"
+            id="input_newname"
+            placeholder="Digite um novo nome..."
+          />
+          <button id="alterarNome">Alterar nome</button>
+          <button id="sair">Sair</button>
+        </div>
+      </dialog>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="painelFav" class="painel-fav">
+      <div id="topo">
+        <h1>Seus Favoritos</h1>
+        <button id="fecharFav" class="excluir">×</button>
+      </div>
+      <div id="produtos_fav"></div>
     </div>
 
     <script src="detalhes.js"></script>
