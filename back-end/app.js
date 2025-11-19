@@ -45,6 +45,16 @@ app.get("/pagina/inicial", async (req, res) => {
   } else return res.status(400);
 });
 
+//searchbar
+app.get("/produtosSearch", async (req, res) => {
+  const {search} = req.query
+  console.log(search)
+  const produtos = await sql `SELECT * FROM produtos WHERE nome_produto LIKE ${'%' + search + '%'}`;
+  if (produtos) {
+    return res.status(200).json(produtos);
+  } else return res.status(400);
+});
+
 //detalhes por categoria
 app.get("/produtos/:categoria", async (req, res) => {
   const { categoria } = req.params;
@@ -53,29 +63,6 @@ app.get("/produtos/:categoria", async (req, res) => {
   if (produtos) {
     return res.status(200).json(produtos);
   } else return res.status(400);
-});
-
-app.put("/produtosAdmin/:id", async (req, res) => {
-  const { id } = req.params;
-  const {
-    nomeProduto,
-    quantidadeProduto,
-    descricao_produto,
-    categoria_produto,
-    imgUrl,
-    valorProduto,
-  } = req.body;
-
-  await sql`UPDATE public.produtos SET 
-  nome_produto=${nomeProduto}, 
-  valor_produto=${valorProduto} 
-  quantidade_produto=${quantidadeProduto}, 
-  img_url=${imgUrl}, 
-  categoria=${categoria_produto}
-  descricao=${descricao_produto}
-  WHERE id = ${id};`;
-
-  return res.status(201).json("alterado");
 });
 
 //detalhes dos produtos
@@ -87,14 +74,12 @@ app.get("/produto/:id", async (req, res) => {
 
 //criar venda
 app.post("/comprar", async (req, res) => {
-  const { id_produto, valor_total, data_venda, id_usuario } = req.body;
-  console.log(id_produto);
-  const comprar =
-    await sql`insert into venda(id_produto, valor_total, data_venda, id_usuario) values (${id_produto}, ${valor_total}, ${data_venda}, ${id_usuario})`;
+  const { id_produto, forma_pagamento , valor_total, data_venda, id_usuario } = req.body;
+  const comprar = await sql`INSERT INTO venda(id_produto, forma_pagamento, valor_total, data_venda, status_venda, id_usuario) VALUES (${id_produto}, ${forma_pagamento} , ${valor_total}, ${data_venda}, 'sucedida' , ${id_usuario})`;
   if (comprar) {
-    return res.status(200).json(cadastro[0]);
+    return res.status(200).json(comprar[0]);
   }
-  return res.status(401).json("Erro ao cadastrar");
+  return res.status(401).json("Erro ao realizar compra");
 });
 
 //deletar produtos
