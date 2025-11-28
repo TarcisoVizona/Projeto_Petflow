@@ -253,6 +253,6 @@ salvar.addEventListener("click", () => {
     return alert("Preencha todos os campos!");
   }
   CadastrarProduto();
+  criar_produto.style.display = "block"
   salvar.style.display = "none";
-
 });

@@ -15,6 +15,7 @@ const input_newname = document.querySelector("#input_newname");
 const Xbutton = document.querySelector("#X");
 const p = document.querySelector("p");
 const barra_pesquisa = document.querySelector("#barra_pesquisa");
+const semProdutos = document.querySelector("#semProdutos");
 
 //entrar no perfil
 perfil.addEventListener("click", () => {
@@ -380,10 +381,5 @@ const res = await fetch(`http://localhost:3000/produtosSearch?search=${search}`)
 
       vazia.appendChild(link);
     });
-  } else {
-    const h1Bar = document.createElement("h1");
-    
-    vazia.appendChild(h1Bar)
-    h1Bar.innerText = 'Nenhum produto encontrado'
-  };
+  }
 });

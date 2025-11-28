@@ -11,7 +11,8 @@ const barra_pesquisa = document.querySelector("#barra_pesquisa");
 const valorQuantidade = document.getElementById("valorQuantidade");
 const aumentarBtn = document.getElementById("aumentar");
 const diminuirBtn = document.getElementById("diminuir");
-const container = document.querySelector("#container")
+const container = document.querySelector("#container");
+
 let lista_produtos =
   JSON.parse(localStorage.getItem("produtos_favoritos")) || [];
 
@@ -113,10 +114,10 @@ if (coracao) {
   coracao.addEventListener("click", () => {
     const favitem = document.querySelector("#produtos_fav");
     coracao.classList.toggle("ativo");
-  
+
     lista_produtos.map((p) => {
       const itemFav = document.createElement("div");
-      itemFav.id= "detalhesitens";
+      itemFav.id = "detalhesitens";
 
       const imgFav = document.createElement("img");
       imgFav.src = p.img_url;
@@ -128,15 +129,15 @@ if (coracao) {
 
       const precoFav = document.createElement("p");
       precoFav.innerText = `R$ ${p.valor_produto}`;
-      const detalhesitens = document.createElement('div')
+      const detalhesitens = document.createElement("div");
 
       itemFav.appendChild(imgFav);
       detalhesitens.appendChild(nomeFav);
       detalhesitens.appendChild(precoFav);
       itemFav.appendChild(detalhesitens);
 
-      favitem.appendChild(itemFav); 
-  });
+      favitem.appendChild(itemFav);
+    });
   });
 }
 
@@ -148,13 +149,6 @@ function fecharfav() {
 if (fecharFav) {
   fecharFav.addEventListener("click", fecharfav);
 }
-
-//  function excluir() {
-//    document.getElementById("detalhesitens").innerHTML = "";
-//    document.getElementById("tudo").innerText = "";
-//  }
-
-//quantidade de produtos no carrinho
 
 function aumentarQuantidade() {
   let quantidade = parseInt(valorQuantidade.innerText);
@@ -181,7 +175,7 @@ fecharFav.addEventListener("click", fecharfav);
 // Fecha ao clicar fora
 overlay.addEventListener("click", fecharfav);
 
-carrinho.addEventListener("click", () => {
+carrinho.addEventListener("", () => {
   painelFav.classList.add("ativo");
   overlay.classList.add("ativo");
 });
@@ -191,19 +185,6 @@ function excluir() {
   document.getElementById("detalhesitens").innerHTML = "";
   document.getElementById("tudo").innerText = "";
 }
-
-//alterar nome
-alterarNome.addEventListener("click", () => {
-  alterarNome.innerText = "Salvar";
-  input_newname.style.display = "block";
-
-  alterarNome.addEventListener("click", async () => {
-    const nomeUsuario = input_newname.value;
-    localStorage.setItem("nomeUsuario", nomeUsuario);
-    window.location.reload();
-  });
-  return;
-});
 
 //alterar nome
 alterarNome.addEventListener("click", () => {

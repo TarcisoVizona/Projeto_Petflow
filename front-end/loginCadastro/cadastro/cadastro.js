@@ -6,15 +6,20 @@ cadastrar.addEventListener("click", async () => {
   const email = document.querySelector("#email").value;
   const telefone = document.querySelector("#telefone").value;
   const senha = document.querySelector("#senha").value;
+  let nomeTrim = nome.trim();
+
   if (nome == "" || email == "" || telefone == "" || senha == "") {
     return alert("Todos os campos devem ser preenchidos");
   }
-
   if (nome.length < 3) {
     alert("O nome deve ter pelo menos 3 caracteres!");
     return;
   }
-  if (!email.includes("@")) {
+  if (nomeTrim === "") {
+    alert("Digite um nome válido");
+    return;
+  }
+  if (!email.includes("@") || !email.includes(".com") || email.includes(" ")) {
     alert("Digite um e-mail válido!");
     return;
   }
@@ -38,7 +43,7 @@ cadastrar.addEventListener("click", async () => {
     });
     if (resposta.status == 200) {
       return (window.location.href = "../login/login.html");
-    } 
+    }
   } catch (error) {
     alert("Erro ao Cadastrar. Tente novamente.");
   }

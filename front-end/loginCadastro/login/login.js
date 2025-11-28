@@ -25,7 +25,7 @@ entrar.addEventListener("click", async () => {
     localStorage.setItem("cargo", usuario.cargo);
   } 
     else {
-    alert("Usuario ou senha incorretos");
+    return alert("Usuario ou senha incorretos");
   }
 
   if (usuario.cargo == 'Sem cargo'){
